@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "onlinestore.api",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/index.html",
+      "serviceActions": {
+        "elasticsearch": "DoNotStart",
+        "kibana": "DoNotStart",
+        "onlinestore.api": "StartDebugging",
+        "sqlserver": "StartWithoutDebugging"
+      }
+    }
+  }
+}

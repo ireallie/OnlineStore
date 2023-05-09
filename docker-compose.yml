@@ -1,0 +1,62 @@
+version: '3.4'
+
+services:
+  onlinestore.api:
+    image: ${DOCKER_REGISTRY-}onlinestoreapi
+    build:
+      context: .
+      dockerfile: src/OnlineStore.Api/Dockerfile
+    ports:
+    - 5400:80
+    - 5401:443
+    depends_on:
+     - sqlserver
+    networks:
+    - docker-network
+  sqlserver:
+    container_name: sqlserver
+    restart: unless-stopped
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      SA_PASSWORD: "In0275aIw6w"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - "./data-mssql:/var/opt/mssql/data"
+    ports:
+      - 5050:1433
+    networks:
+    - docker-network
+  elasticsearch:
+   container_name: elasticsearch
+   image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+   ports:
+    - 9200:9200
+   volumes:
+    - elasticsearch-data:/usr/share/elasticsearch/data
+   environment:
+    - xpack.security.enabled=false
+    - xpack.monitoring.enabled=true
+    - xpack.watcher.enabled=false
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    - discovery.type=single-node
+   networks:
+    - docker-network
+  kibana:
+   container_name: kibana
+   image: docker.elastic.co/kibana/kibana:7.17.9
+   ports:
+    - 5601:5601
+   depends_on:
+    - elasticsearch
+   environment:
+    - ELASTICSEARCH_URL=http://localhost:9200
+    -  XPACK_MONITORING_ENABLED=true
+   networks:
+    - docker-network
+
+networks:
+  docker-network:
+    driver: bridge
+
+volumes:
+  elasticsearch-data:

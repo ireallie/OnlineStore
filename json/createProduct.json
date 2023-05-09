@@ -1,0 +1,49 @@
+{
+  "name": "longsleeve 1'm tired of my uselessness",
+  "description": "longsleeve 1'm tired of my uselessness velour, machine embroidery, oversized fit. so much hate for me everywhere today, can't figure out what i did to cause it... i am trying to ovrercome, to overcome it all.",
+  "sku": null,
+  "regularPrice": 7000,
+  "salePrice": null,
+  "label": "preorder",
+  "isVisible": true,
+  "quantity": null,
+  "options": [
+    {
+      "name": "Size",
+      "values": [
+        "s-m",
+        "m-l",
+        "xl+"
+      ]
+    }
+  ],
+  "variants": [
+   {
+      "regularPrice": 7000,
+      "salePrice": null,
+      "sku": "LITOMUSS-M",
+      "quantity": null,
+      "choices": {
+        "Size": "s-m"
+      }
+   },
+   {
+      "regularPrice": 7000,
+      "salePrice": null,
+      "sku": "LITOMUSM-L",
+      "quantity": null,
+      "choices": {
+        "Size": "m-l"
+      }
+   },
+      {
+      "regularPrice": 7000,
+      "salePrice": null,
+      "sku": "LITOMUSXL+",
+      "quantity": null,
+      "choices": {
+        "Size": "xl+"
+      }
+    }
+  ]
+}
